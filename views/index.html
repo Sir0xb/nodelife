@@ -1,0 +1,15 @@
+{% extends "layout/layout.html" %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+    <!-- ko module: container --><!-- /ko -->
+{% endblock %}
+
+{% block script %}
+    <script type="text/javascript">
+        require(["knockout", "Super", "Tools", "ko-amd"], function (ko, Super, Tools) {
+            
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% include "./meta.html" %}
+        {% block meta %}{% endblock %}
+
+        <title>{% block title %}My Title{% endblock %}</title>
+
+        {% include "./links.html" %}
+        {% block mainLink %}{% endblock %}
+
+        {% include "./scripts.html" %}
+        {% block mainScript %}{% endblock %}
+    </head>
+    <body>
+        {% block content %}{% endblock %}
+        {% block script %}{% endblock %}
+    </body>
+</html>
