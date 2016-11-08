@@ -1,0 +1,11 @@
+{
+  "name": "sammy",
+  "version": "0.7.6",
+  "description": "",
+  "main": "./src/sammy.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

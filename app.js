@@ -16,3 +16,7 @@ app.use(serve(path.join(__dirname, '/public')));
 route(app, render);
 
 app.listen(8080);
+
+app.callback(function () {
+    console.info("message");
+});

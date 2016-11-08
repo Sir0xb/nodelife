@@ -1,0 +1,11 @@
+{
+  "name": "requirejs",
+  "version": "2.1.20",
+  "description": "",
+  "main": "./src/require.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
