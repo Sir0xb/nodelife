@@ -7,5 +7,7 @@ define(["knockout", "sweetalert", "ko-amd", "semantic"], function (ko, sweet) {
         self.sweet = sweet;
 
         self.container = ko.observable({});
+
+        return self;
     };
 });

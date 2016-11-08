@@ -11,7 +11,7 @@ require.config({
         // 其他插件
         "sammy"             : "lib/sammy/0.7.6/dist/sammy.min",
         "sweetalert"        : "lib/sweetalert/sweetalert-2/sweetalert.min",
-        "mock"              : "lib/mockjs/1.0.1/mock-min",
+        "mock"              : "lib/mockjs/1.0.1/dist/mock-min",
         "text"              : "lib/requirejs-plugins/text",
         "semantic"          : "lib/semantic/semantic-2.2.6/semantic.min",
 
