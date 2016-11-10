@@ -10,9 +10,9 @@ define(["knockout", "navigation"], function (ko) {
             <div class="ui inverted vertical footer segment">
                 <div class="ui center aligned container">
                     <div class="ui horizontal inverted small divided link list">
-                        <a class="item" target="_blank" href="http://www.17zuoye.com/">一起作业网</a>
-                        <a class="item" target="_blank" href="http://tiku.17zuoye.net/">一起作业题库系统</a>
-                        <a class="item" target="_blank" href="http://wiki.17zuoye.net/">一起作业维基系统</a>
+                        <a class="item" target="_blank" href="https://boliball.com/">Boliball</a>
+                        <a class="item" target="_blank" href="http://www.knockmeout.net/">Knockmeout</a>
+                        <a class="item" target="_blank" href="http://www.worldwildlife.org/">WWF</a>
                     </div>
                 </div>
             </div>

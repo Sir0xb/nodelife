@@ -7,10 +7,10 @@ define(["knockout", "navigation", "footer"], function (ko) {
             this.container = ko.observable({});
         },
         template: function () {
+            // return `
+            // <ko-navigation params="type: _type"></ko-navigation>
             return `
-            <ko-navigation params="type: _type"></ko-navigation>
-            abasdf
-            <!-- ko module: container --><!-- /ko -->
+            <div class="login_container" data-bind="module: container"></div>
             <ko-footer></ko-footer>
             `;
         }()
