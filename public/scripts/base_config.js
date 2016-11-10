@@ -15,12 +15,17 @@ require.config({
         "text"              : "lib/requirejs-plugins/text",
         "semantic"          : "lib/semantic/semantic-2.2.6/semantic.min",
 
+        // 依赖样式
+        "sweetalert-css"    : "lib/sweetalert/sweetalert-2/sweetalert",
+
         // 项目自有库
         "Tools"             : "scripts/tools/tools",
         "Super"             : "scripts/tools/super",
 
-        // 依赖样式
-        "sweetalert-css"    : "lib/sweetalert/sweetalert-2/sweetalert"
+        // components
+        "navigation"        : "scripts/components/navigation",
+        "footer"            : "scripts/components/footer",
+        "layout"            : "scripts/components/layout"
     },
     shim   : {
         "semantic"      : ["jquery"],

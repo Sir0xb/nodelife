@@ -12,6 +12,7 @@
   "readme": "README.md",
   "main": "app.js",
   "scripts": {
+    "mongo": "mongod --dbpath ~/work/mongodb/nodelife/data",
     "app": "babel-node app.js",
     "watch": "gulp watch",
     "build": "gulp build",
@@ -61,6 +62,7 @@
     "koa-route": "=2.4.2",
     "koa-static": "=2.0.0",
     "lodash": "=4.16.4",
+    "mongoose": "=4.6.6",
     "swig": "=1.4.2"
   },
   "repository": {

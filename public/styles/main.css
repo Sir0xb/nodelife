@@ -1,0 +1,16 @@
+.ui.fixed.menu, .ui[class*="top fixed"].menu {
+    top: 0;
+    left: 0;
+    right: auto;
+    bottom: auto;
+}
+
+.ui.footer.segment {
+    padding: 3em 0em;
+}
+.ui.footer.segment {
+    padding: 2em 0;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
