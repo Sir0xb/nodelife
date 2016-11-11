@@ -3,7 +3,11 @@
 {% block title %} {{ title }} {% endblock %}
 
 {% block content %}
-    <!-- ko module: viewport --><!-- /ko -->
+    <ko-layout params="context: __context__"></ko-layout>
+    <div id="loading" data-bind="visible: loading()">
+        <div class='rabbit'></div>
+        <div class='clouds'></div>
+    </div>
 {% endblock %}
 
 {% block script %}
@@ -12,30 +16,38 @@
         var modules = {};
     </script>
     <script type="text/javascript">
-        require(["knockout", "Super", "Tools", "ko-amd"], function (ko, Super, Tools) {
+        require(["knockout", "Tools", "ko-amd", "layout"], function (ko, Tools) {
             // 问了能更灵活管理，加入插件等元素，不单独管理模块与模板，统一设置成统一目录
             ko.bindingHandlers.module.baseDir = "scripts/";  // 模块的默认文件夹
             ko.amdTemplateEngine.defaultPath = "scripts/";   // 模板的默认文件夹
 
             ko.amdTemplateEngine.defaultSuffix = '.html';    // 默认模板后缀
 
-            params.mapping           = modules;
-            params.mapping.getJS     = Tools.getFunc("applications", "{{ appName }}", "js", params.test);
-            params.mapping.getTemp   = Tools.getFunc("applications", "{{ appName }}", "html", params.test);
+            var self = this;
 
-            var self = Super.call(this, { parent: {}, data: params });
+            self.parent                 = {};
+            self.data                   = params;
+            self.data.mapping           = modules;
+            self.data.mapping.getJS     = Tools.getFunc("applications", "{{ appName }}", "js", self.data.test);
+            self.data.mapping.getTemp   = Tools.getFunc("applications", "{{ appName }}", "html", self.data.test);
 
-            self.container({
-                name       : self.data.mapping.getJS("main"),
-                template   : self.data.mapping.getTemp("main"),
-                data       : {
-                    parent: self,
-                    data: self.data
+            self.loading   = ko.observable(true);
+            self.viewport  = ko.observable("full");
+            self.container = ko.observable({
+                name     : self.data.mapping.getJS("main"),
+                template : self.data.mapping.getTemp("main"),
+                data     : {
+                    parent : self,
+                    data   : self.data
                 },
                 afterRender: function (){
                     ko.utils.triggerEvent(document.body, "pageReady");
+                    self.loading(false);
                 }
             });
+
+            // 布局管理器上下文(初始化的时候给进去就结束了)
+            self.__context__ = self;
 
             ko.applyBindings(self);
         });
