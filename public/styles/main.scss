@@ -1,3 +1,6 @@
+//@import "base/index";
+//@import "base/special";
+
 //@import "helper/variables";
 //@import "helper/mixin";
 //
@@ -7,8 +10,6 @@
 //@import "components/classroom";
 //@import "components/hover";
 //@import "components/imgcut";
-//
-//@import "base/index";
-//@import "base/special";
-//
-//@import "pages/placement";
+
+@import "pages/fix_semantic";
+@import "pages/loading";

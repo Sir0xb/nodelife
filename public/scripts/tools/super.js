@@ -6,6 +6,7 @@ define(["knockout", "sweetalert", "ko-amd", "semantic"], function (ko, sweet) {
         self.data = context.data;
         self.sweet = sweet;
 
+        self.viewport = self.parent.viewport;
         self.container = ko.observable({});
 
         return self;
