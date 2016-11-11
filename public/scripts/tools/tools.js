@@ -374,7 +374,7 @@ define(["jquery", "mock"], function ($, Mock) {
         // 默认参数
         var def = {
             url             : conf.url             || "",
-            dataType        : conf.dataType        || "POST",
+            type            : conf.type            || "POST",
             dataType        : conf.dataType        || 'json',
             data            : conf.data            || {},
             showLoading     : Tools.isBlank(conf.showLoading) ? true : conf.showLoading,            //是否显示loading图标
