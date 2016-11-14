@@ -1,26 +1,34 @@
-define(["knockout", "Super", "Tools"], function (ko, Super, Tools) {
+define(["knockout", "Super", "sammy"], function (ko, Super, Sammy) {
     return function (context) {
-        var self = Super.call(this, context, 'login');
+        var self = Super.call(this, context);
 
-        self.username = ko.observable('');
-        self.password = ko.observable('');
+        self.viewport("login");
+        self.vpStyle("login_container");
 
-        self.login = function () {
-            Tools.ajax({
-                url    : "/login",
-                data   : {
-                    username: self.username(),
-                    password: self.password()
-                },
-                success: function (returnData) {
-                    console.info(returnData);
+        Sammy(function () {
+            this.get(/\#\/([\s\S]*)/, function (){
+                var module = this.params.splat[0];
 
-                    if (returnData.success) {
-                        // body...
+                self.container({
+                    name    : self.data.mapping.getJS(module),
+                    template: self.data.mapping.getTemp(module),
+                    data    : {
+                        parent  : self,
+                        data    : self.data
+                    },
+                    afterRender: function (){
+                        ko.utils.triggerEvent(document.body, "pageReady");
+                        self.loading(false);
                     }
-                }
+                });
             });
-        };
+
+            this.get(self.data.appUrl, function () {
+                this.app.runRoute("get", "#/login");
+            });
+        });
+
+        Sammy().run();
 
         if (self.data.test) {
             main = self;

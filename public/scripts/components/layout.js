@@ -1,35 +1,34 @@
 'use strict';
 
-define(["knockout", "navigation", "footer"], function (ko) {
+define(["knockout", "lodash", "ko-amd", "navigation", "footer"], function (ko, _) {
     ko.components.register('ko-layout', {
         viewModel: function (params) {
-            this.viewport = params.context.viewport;
-            this.container = params.context.container;
+            var self = _.extend(this, params.context);
+
+            self.container({
+                name     : self.data.mapping.getJS("main"),
+                template : self.data.mapping.getTemp("main"),
+                data     : {
+                    parent : self,
+                    data   : self.data
+                },
+                afterRender: function (){
+                    ko.utils.triggerEvent(document.body, "pageReady");
+                    self.loading(false);
+                }
+            });
         },
         template: function () {
             return `
-            <!-- Application 初始化前 -->
-            <!-- ko if: viewport() == 'login' -->
-            <div class="login_container" data-bind="module: container"></div>
-            <ko-footer></ko-footer>
-            <!-- /ko -->
-
-            <!-- 全屏模式 -->
-            <!-- ko if: viewport() == 'full' -->
-            <!-- ko module: container --><!-- /ko -->
-            <!-- /ko -->
-
-            <!-- 大区域模式 -->
-            <!-- ko if: viewport() == 'big' -->
+            <!-- 显示 navigation -->
+            <!-- ko if: ['big', 'normal'].indexOf(viewport()) != -1 -->
             <ko-navigation></ko-navigation>
-            <!-- ko module: container --><!-- /ko -->
-            <ko-footer></ko-footer>
             <!-- /ko -->
 
-            <!-- 普通模式 -->
-            <!-- ko if: viewport() == 'normal' -->
-            <ko-navigation></ko-navigation>
-            <!-- ko module: container --><!-- /ko -->
+            <div data-bind="module: container, attr: { class: vpStyle() }"></div>
+
+            <!-- 显示 footer -->
+            <!-- ko if: ['login', 'big', 'normal'].indexOf(viewport()) != -1 -->
             <ko-footer></ko-footer>
             <!-- /ko -->
             `;

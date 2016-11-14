@@ -12,6 +12,7 @@ require.config({
         "sammy"             : "lib/sammy/0.7.6/dist/sammy.min",
         "sweetalert"        : "lib/sweetalert/sweetalert-2/sweetalert.min",
         "mock"              : "lib/mockjs/1.0.1/dist/mock-min",
+        "lodash"            : "lib/lodash/4.16.4/lodash",
         "text"              : "lib/requirejs-plugins/text",
         "semantic"          : "lib/semantic/semantic-2.2.6/semantic.min",
 
@@ -32,17 +33,6 @@ require.config({
         "sammy"         : ["jquery", "text"],
         "sweetalert"    : ["css!sweetalert-css"],
         "ko-amd"        : ["knockout"]
-
-        // "ko-mapping"    : ["knockout"],
-        // "ko-switch"     : ["knockout"],
-        // "ko-validation" : ["knockout"],
-        // "ko-datepicker" : ["knockout", "jquery", "jquery-ui", "css!jquery-ui-css"],
-        // "ko-date"       : ["knockout", "moment"],
-        // "ko-error"      : ["knockout"],
-        // "ko-hover"      : ["knockout", "jquery"],
-        // "ko-textcut"    : ["knockout", "jquery"],
-        // "YQplayer"      : ["jquery", "jplayer", "css!YQplayer-css"],
-        // "uploader"      : ["jquery"]
     },
     map: {
         "*": {
