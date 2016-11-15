@@ -4,17 +4,22 @@ define(["knockout", "Super", "Tools"], function (ko, Super, Tools) {
 
         self.username = ko.observable('');
         self.password = ko.observable('');
+        self.confirm_password = ko.observable('');
 
-        self.login = function () {
+        self.register = function () {
             Tools.ajax({
-                url    : "/event/login",
+                url    : "/event/register",
                 data   : {
-                    username: self.username(),
-                    password: self.password()
+                    username         : self.username(),
+                    password         : self.password(),
+                    confirm_password : self.confirm_password()
                 },
                 success: function (returnData) {
+                    console.info(returnData);
+
                     if (returnData.success) {
-                        location.reload();
+                        self.sweet('', returnData.message, 'success');
+                        location.hash = "#/login";
                     } else {
                         self.sweet('', returnData.message, 'error');
                     }
@@ -23,7 +28,7 @@ define(["knockout", "Super", "Tools"], function (ko, Super, Tools) {
         };
 
         if (self.data.test) {
-            login = self;
+            register = self;
         }
     };
 });

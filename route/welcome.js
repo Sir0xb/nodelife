@@ -1,14 +1,15 @@
 'use strict';
 
+// 登陆 注册账号
 module.exports = function (app) {
     app.get("/", function (req, res, next) {
         res.render("index.html", {
-            // user    : req.session.user,
+            user    : req.session.user,
             // currentUser: userdata,
             // menus   : obj[0].subMenu || [],
             // message : message,
-            title   : 'welcome',
-            appName : 'welcome',
+            title   : 'Welcome',
+            appName : req.session.user ? 'firsteye' : 'welcome',
             appUrl  : '/',
             // compress: ['localhost', '127.0.0.1'].indexOf(req.hostname) != -1 ? false : true,
             // showTest: !!req.query.unitTest,
@@ -16,14 +17,20 @@ module.exports = function (app) {
         });
     });
 
-    app.post('/login', function (req, res, next) {
-        var UserDao = require("../models/userDao");
+    app.post("/event/logout", function (req, res, next) {
+        req.session.user = null;
 
-        var username = req.body.username;
-        var password = req.body.password;
+        res.json({
+            success: true,
+            message: '成功退出'
+        });
+    });
 
-        console.info(username);
-        console.info(password);
+    app.post('/event/login', function (req, res, next) {
+        let UserDao = require("../models/userDao");
+
+        let username = req.body.username;
+        let password = req.body.password;
 
         UserDao.findByName(username, function (err, obj) {
             if (err || !obj) {
@@ -47,17 +54,41 @@ module.exports = function (app) {
         });
     });
 
-    app.get('register', function (req, res, next) {
-        res.render("index.html", {
-            // user    : req.session.user,
-            // currentUser: userdata,
-            // menus   : obj[0].subMenu || [],
-            // message : message,
-            title   : 'welcome',
-            appName : 'welcome'
-            // compress: ['localhost', '127.0.0.1'].indexOf(req.hostname) != -1 ? false : true,
-            // showTest: !!req.query.unitTest,
-            // params  : params
+    app.post('/event/register', function (req, res, next) {
+        let UserDao = require("../models/userDao");
+
+        let username = req.body.username;
+        let password = req.body.password;
+        let confirm_password = req.body.confirm_password;
+
+        UserDao.findByName(username, function (err, obj) {
+            console.log(err);
+            console.log(obj);
+
+            if (err) {
+                res.json({
+                    success: false,
+                    message: "系统异常，请联系管理员"
+                });
+            } else if (obj) {
+                res.json({
+                    success: false,
+                    message: "用户已存在"
+                });
+            } else {
+                UserDao.save({
+                    username: username,
+                    password: password,
+                    level   : username == 'root' ? 1 : 7
+                }, function (err) {
+                    if (!err) {
+                        res.json({
+                            success  : true,
+                            message  : "创建成功"
+                        });
+                    }
+                });
+            }
         });
     });
 };

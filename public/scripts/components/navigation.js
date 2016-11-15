@@ -1,9 +1,22 @@
 'use strict';
 
-define(["knockout"], function (ko) {
+define(["knockout", "Tools"], function (ko, Tools) {
     ko.components.register('ko-navigation', {
         viewModel: function (params) {
             this.type = params.type;
+
+            this.logout = function () {
+                Tools.ajax({
+                    url    : "/event/logout",
+                    success: function (returnData) {
+                        console.info(returnData);
+
+                        if (returnData.success) {
+                            location.href = "/";
+                        }
+                    }
+                });
+            };
         },
         template: function () {
             return `
@@ -25,7 +38,7 @@ define(["knockout"], function (ko) {
                     </div>
                 </div>
                 <div class="right menu">
-                    <a class="item">退出系统</a>
+                    <a class="item" data-bind="click: logout">退出系统</a>
                 </div>
             </div>
             `;
