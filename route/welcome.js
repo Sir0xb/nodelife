@@ -2,15 +2,34 @@
 
 // 登陆 注册账号
 module.exports = function (app) {
-    app.get("/", function (req, res, next) {
+    app.get("/welcome", function (req, res, next) {
         res.render("index.html", {
             user    : req.session.user,
             // currentUser: userdata,
             // menus   : obj[0].subMenu || [],
             // message : message,
             title   : 'Welcome',
-            appName : req.session.user ? 'firsteye' : 'welcome',
-            appUrl  : '/',
+            appName : 'welcome',
+            appUrl  : '/welcome',
+            // compress: ['localhost', '127.0.0.1'].indexOf(req.hostname) != -1 ? false : true,
+            // showTest: !!req.query.unitTest,
+            params  : { test: true }
+        });
+    });
+
+    app.get("/", function (req, res, next) {
+        res.redirect('/main');
+    });
+
+    app.get("/main", function (req, res, next) {
+        res.render("index.html", {
+            user    : req.session.user,
+            // currentUser: userdata,
+            // menus   : obj[0].subMenu || [],
+            // message : message,
+            title   : 'Welcome',
+            appName : 'firsteye',
+            appUrl  : '/main',
             // compress: ['localhost', '127.0.0.1'].indexOf(req.hostname) != -1 ? false : true,
             // showTest: !!req.query.unitTest,
             params  : { test: true }

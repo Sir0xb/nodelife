@@ -14,7 +14,7 @@ define(["knockout", "Super", "Tools"], function (ko, Super, Tools) {
                 },
                 success: function (returnData) {
                     if (returnData.success) {
-                        location.reload();
+                        location.href = "/main";
                     } else {
                         self.sweet('', returnData.message, 'error');
                     }

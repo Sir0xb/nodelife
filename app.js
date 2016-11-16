@@ -12,6 +12,7 @@ let MongoStore = ___(session);
 import morgan from 'morgan';
 import flash from 'connect-flash';
 import swig from 'swig';
+import nunjucks from 'nunjucks';
 import fs from 'fs';
 
 import Config from './config/config';
@@ -30,9 +31,11 @@ let app = express();
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
 app.set('port', process.env.PORT || 8080);
-
 app.set('views',  `${__dirname}/views`);
 app.use(express.static(`${__dirname}/public`));
+
+app.set('view cache', false);
+swig.setDefaults({ cache: false });
 
 app.use(flash());
 app.use(cookie());

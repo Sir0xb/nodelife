@@ -55,9 +55,6 @@
     "webpack": "=1.13.3"
   },
   "dependencies": {
-    "lodash": "=4.16.4",
-    "mongoose": "=4.6.6",
-    "swig": "=1.4.2",
     "body-parser": "=1.14.2",
     "connect-flash": "=0.1.1",
     "connect-mongo": "=0.8.2",
@@ -65,8 +62,11 @@
     "express": "=4.13.3",
     "express-session": "=1.12.1",
     "file-stream-rotator": "=0.0.6",
+    "lodash": "=4.16.4",
     "mongodb": "=2.1.18",
-    "morgan": "=1.6.1"
+    "mongoose": "=4.6.6",
+    "morgan": "=1.6.1",
+    "swig": "=1.4.2"
   },
   "repository": {
     "type": "git",

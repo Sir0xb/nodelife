@@ -3,6 +3,14 @@
 define(["knockout", "Tools"], function (ko, Tools) {
     ko.components.register('ko-navigation', {
         viewModel: function (params) {
+            this.backToMain = function () {
+                location.href = "/";
+            };
+
+            this.appJump = function (link) {
+                location.href = link;
+            };
+
             this.logout = function () {
                 Tools.ajax({
                     url    : "/event/logout",
@@ -19,7 +27,7 @@ define(["knockout", "Tools"], function (ko, Tools) {
         template: function () {
             return `
             <div class="ui fixed inverted menu mymenu">
-                <a href="/" class="header item">NF</a>
+                <a class="header item" data-bind="click: backToMain">NF</a>
                 <a class="active item">菜单管理</a>
                 <a class="item">Link</a>
                 <div class="ui dropdown item" tabindex="0">
@@ -43,10 +51,10 @@ define(["knockout", "Tools"], function (ko, Tools) {
                             框架培训
                             <div class="menu">
                                 <div class="header">KnockoutJS</div>
-                                <a href="/demos#/basic/case1" class="item">基本用法</a>
-                                <a href="/demos#/basic/case2" class="item">列表用法</a>
-                                <a href="/demos#/handlers/case3" class="item">自定义标签</a>
-                                <a href="/demos#/plugin/ko-mapping" class="item">ko-mapping</a>
+                                <a class="item" data-bind="click: appJump.bind($data, '/demos#/basic/case1')">基本用法</a>
+                                <a class="item" data-bind="click: appJump.bind($data, '/demos#/basic/case2')">列表用法</a>
+                                <a class="item" data-bind="click: appJump.bind($data, '/demos#/handlers/case3')">自定义标签</a>
+                                <a class="item" data-bind="click: appJump.bind($data, '/demos#/plugin/ko-mapping')">ko-mapping</a>
                             </div>
                         </div>
                         <div class="item">

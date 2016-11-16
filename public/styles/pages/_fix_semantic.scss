@@ -31,22 +31,22 @@
       max-width: 450px;
     }
 }
-
-body {
-    background-color: #FFFFFF;
+html {
     height: 100%;
 }
 
-.mycontainer{
+body {
     min-height: 100%;
     position: relative;
+    background-color: #FFFFFF;
 }
 .mycontent{
     padding-top: 50px!important;
     padding-bottom: 145px!important;
     overflow: hidden;
+    min-height: 100%;
 }
 .myfooter{
-    position: absolute!important;
+    position: fixed!important;
     bottom: 0;
 }
