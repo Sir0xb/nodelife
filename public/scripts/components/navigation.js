@@ -20,7 +20,7 @@ define(["knockout", "Tools"], function (ko, Tools) {
         },
         template: function () {
             return `
-            <div class="ui fixed inverted menu">
+            <div class="ui fixed inverted menu mymenu">
                 <a href="/" class="header item">NF</a>
                 <a class="active item">菜单管理</a>
                 <a class="item">Link</a>

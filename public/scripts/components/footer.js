@@ -7,7 +7,7 @@ define(["knockout", "navigation"], function (ko) {
         },
         template: function () {
             return `
-            <div class="ui inverted vertical footer segment">
+            <div class="ui inverted vertical footer segment myfooter">
                 <div class="ui center aligned container">
                     <div class="ui horizontal inverted small divided link list">
                         <a class="item" target="_blank" href="https://boliball.com/">Boliball</a>

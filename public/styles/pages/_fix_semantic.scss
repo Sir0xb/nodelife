@@ -12,7 +12,7 @@
     padding: 2em 0;
     position: absolute;
     width: 100%;
-    bottom: 0;
+    //bottom: 0;
 }
 
 .login_container {
@@ -30,4 +30,23 @@
     .column {
       max-width: 450px;
     }
+}
+
+body {
+    background-color: #FFFFFF;
+    height: 100%;
+}
+
+.mycontainer{
+    min-height: 100%;
+    position: relative;
+}
+.mycontent{
+    padding-top: 50px!important;
+    padding-bottom: 145px!important;
+    overflow: hidden;
+}
+.myfooter{
+    position: absolute!important;
+    bottom: 0;
 }

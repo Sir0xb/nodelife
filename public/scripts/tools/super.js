@@ -1,4 +1,4 @@
-define(["knockout", "sweetalert", "Tools", "ko-amd", "semantic"], function (ko, sweet, Tools) {
+define(["knockout", "sweetalert", "Tools", "ko-amd", "ko-mapping", "semantic"], function (ko, sweet, Tools) {
     return function (context) {
         var self = this;
 

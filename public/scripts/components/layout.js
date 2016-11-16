@@ -25,7 +25,7 @@ define(["knockout", "lodash", "ko-amd", "navigation", "footer"], function (ko, _
             <ko-navigation></ko-navigation>
             <!-- /ko -->
 
-            <div data-bind="module: container, attr: { class: vpStyle() }"></div>
+            <div data-bind="module: container, attr: { class: vpStyle() + ' mycontent' }"></div>
 
             <!-- 显示 footer -->
             <!-- ko if: ['login', 'big', 'normal'].indexOf(viewport()) != -1 -->

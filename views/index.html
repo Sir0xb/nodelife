@@ -3,11 +3,13 @@
 {% block title %} {{ title }} {% endblock %}
 
 {% block content %}
+<div class="mycontainer">
     <ko-layout params="context: __context__"></ko-layout>
     <div id="loading" data-bind="visible: loading()">
         <div class='rabbit'></div>
         <div class='clouds'></div>
     </div>
+</div>
 {% endblock %}
 
 {% block script %}
