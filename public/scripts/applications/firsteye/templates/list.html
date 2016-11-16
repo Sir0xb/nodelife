@@ -1,0 +1,79 @@
+<div class="ui breadcrumb">
+    <a class="section" href="/"><i class="icon home"></i></a>
+    <i class="right chevron icon divider"></i>
+    <div class="active section">用户列表</div>
+</div>
+<div class="ignored ui info message">
+    <div class="ui form">
+        <div class="inline fields">
+            <div class="field">
+                <label style="width: 80px; text-align: right;">学生ID:</label>
+            </div>
+            <div class="two wide field">
+                <input type="text" data-bind="value: studentId, valueUpdate: 'keyup'">
+            </div>
+            <div class="field">
+                <label style="width: 80px; text-align: right;">学生姓名:</label>
+            </div>
+            <div class="two wide field">
+                <input type="text" data-bind="value: studentName, valueUpdate: 'keyup'">
+            </div>
+            <div class="field">
+                <label style="width: 80px; text-align: right;">家长手机号:</label>
+            </div>
+            <div class="three wide field">
+                <input type="text" data-bind="value: parentMobile, valueUpdate: 'keyup'">
+            </div>
+            <div class="field">
+                <label style="width: 80px; text-align: right;">用户状态:</label>
+            </div>
+            <div class="two wide field">
+                <select class="ui dropdown" data-bind="options: userStateList, optionsValue: 'code', optionsText: 'desc', value: state"></select>
+            </div>
+            <div class="two wide field">
+                <button class="ui blue button" data-bind="click: search.bind($data, 0)">搜索</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="ui grid">
+    <div class="sixteen wide column" style="overflow: hidden;">
+        <table class="ui break celled table">
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>学生ID</th>
+                    <th>学生姓名</th>
+                    <th>家长ID</th>
+                    <th>家长姓名</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- ko foreach: userList -->
+                <tr>
+                    <td data-bind="text: $index() + 1"></td>
+                    <td data-bind="text: studentId"></td>
+                    <td data-bind="text: studentName"></td>
+                    <td data-bind="text: parentId"></td>
+                    <td data-bind="text: parentName"></td>
+                    <td>
+                        <div class="ui mini buttons">
+                            <button class="ui green button" data-bind="click: $parent.edit">编辑</button>
+                            <div class="or"></div>
+                            <button class="ui purple button" data-bind="click: $parent.detaile">详情</button>
+                        </div>
+                    </td>
+                </tr>
+                <!-- /ko -->
+            </tbody>
+            <tfoot data-bind="if: total() > 1">
+                <tr>
+                    <th colspan="6">
+                        <div class="ui right floated pagination menu" data-bind="pagination: { page: 'page', total: 'total', method: 'search' }"></div>
+                    </th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

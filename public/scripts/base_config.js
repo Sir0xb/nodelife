@@ -17,6 +17,7 @@ require.config({
         "ko-onecSubscribe"        : "lib/ko-path/onecSubscribe",
         "ko-beforeSubscribe"      : "lib/ko-path/beforeSubscribe",
         "ko-onecBeforeSubscribe"  : "lib/ko-path/onecBeforeSubscribe",
+        "ko-pages"                : "lib/ko-path/koPaginationHandler",
 
         // 其他插件
         "sammy"                   : "lib/sammy/0.7.6/dist/sammy.min",

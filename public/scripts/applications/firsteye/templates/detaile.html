@@ -1,0 +1,23 @@
+<div class="ui breadcrumb">
+    <a class="section" href="/"><i class="icon home"></i></a>
+    <i class="right chevron icon divider"></i>
+    <div class="active section">用户信息</div>
+</div>
+<table class="ui celled table">
+    <thead>
+        <tr>
+            <th>学生ID</th>
+            <th>学生姓名</th>
+            <th>家长ID</th>
+            <th>家长姓名</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td data-bind="text: information().studentId"></td>
+            <td data-bind="text: information().studentName"></td>
+            <td data-bind="text: information().parentId"></td>
+            <td data-bind="text: information().parentName"></td>
+        </tr>
+    </tbody>
+</table>
