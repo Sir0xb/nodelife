@@ -24,7 +24,7 @@ define(["knockout", "lodash", "ko-amd", "navigation", "footer"], function (ko, _
             <!-- ko component: 'ko-navigation' --><!-- /ko -->
             <!-- /ko -->
 
-            <div class="ui main container" data-bind="css: { login_container: viewport() == 'login' }">
+            <div class="ui main container mycontainer" data-bind="css: { login_container: viewport() == 'login' }">
                 <div data-bind="module: container"></div>
             </div>
 

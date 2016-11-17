@@ -5,15 +5,9 @@
     bottom: auto;
 }
 
-.ui.footer.segment {
-    padding: 3em 0em;
-}
-.ui.footer.segment {
-    padding: 2em 0;
-    position: absolute;
-    width: 100%;
-    //bottom: 0;
-}
+//.ui.footer.segment {
+//    padding: 3em 0em;
+//}
 
 .login_container {
     background-image: url(/images/background.jpg);
@@ -31,11 +25,6 @@
     }
 }
 
-.main.container {
-    margin-top: 4em;
-    margin-bottom: 1em;
-}
-
 body {
     background-color: #FFFFFF;
     position: relative;
@@ -43,8 +32,14 @@ body {
     height: auto;
 }
 
+.mycontainer {
+    padding: 4em 0 7em 0!important;
+}
+
 .myfooter{
-    //position: fixed!important;
-    //bottom: 0;
+    position: absolute!important;
+    padding: 2em 0!important;
+    width: 100%;
+    bottom: 0;
     z-index: 4;
 }
