@@ -1,3 +1,5 @@
+'use strict';
+
 define(["knockout", "Super", "jquery"], function (ko, Super, $) {
     return function (context) {
         var self = Super.call(this, context);
@@ -34,7 +36,7 @@ define(["knockout", "Super", "jquery"], function (ko, Super, $) {
 
         //测试接口
         if (self.data.test) {
-            case1 = self;
+            window.case1 = self;
         }
     };
 });

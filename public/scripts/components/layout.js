@@ -20,16 +20,16 @@ define(["knockout", "lodash", "ko-amd", "navigation", "footer"], function (ko, _
         },
         template: function () {
             return `
-            <!-- 显示 navigation -->
             <!-- ko if: ['big', 'normal'].indexOf(viewport()) != -1 -->
-            <ko-navigation></ko-navigation>
+            <!-- ko component: 'ko-navigation' --><!-- /ko -->
             <!-- /ko -->
 
-            <div data-bind="module: container, attr: { class: vpStyle() + ' mycontent' }"></div>
+            <div class="ui main container" data-bind="css: { login_container: viewport() == 'login' }">
+                <div data-bind="module: container"></div>
+            </div>
 
-            <!-- 显示 footer -->
             <!-- ko if: ['login', 'big', 'normal'].indexOf(viewport()) != -1 -->
-            <ko-footer></ko-footer>
+            <!-- ko component: 'ko-footer' --><!-- /ko -->
             <!-- /ko -->
             `;
         }()

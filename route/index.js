@@ -3,6 +3,7 @@
 import Loger from '../lib/loger';
 
 import customs from './customs';
+import management from './management';
 import welcome from './welcome';
 import demos from './demos';
 
@@ -11,6 +12,7 @@ module.exports = function (app) {
     // 安全检查
     customs(app);
 
+    management(app);
     welcome(app);
     demos(app);
 

@@ -1,3 +1,5 @@
+'use strict';
+
 define(["knockout", "Super", "ko-mapping"], function (ko, Super) {
     return function (context) {
         var self = Super.call(this, context);
@@ -61,7 +63,7 @@ define(["knockout", "Super", "ko-mapping"], function (ko, Super) {
 
         //测试接口
         if (self.data.test) {
-            case2 = self;
+            window.case2 = self;
         }
     };
 });

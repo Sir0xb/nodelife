@@ -4,10 +4,10 @@ define(["knockout", "Super"], function (ko, Super) {
     return function (context) {
         var self = Super.call(this, context);
 
-        // body...
+        console.info("footer");
 
         if (self.data.test) {
-            window.missing = self;
+            window.footer = self;
         }
     };
 });

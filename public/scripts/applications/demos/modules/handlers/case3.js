@@ -1,3 +1,5 @@
+'use strict';
+
 define(["knockout", "ko-textcut", "ko-hover", "ko-beforeSubscribe", "ko-onecBeforeSubscribe", "ko-onecSubscribe"], function (ko) {
     return function (context) {
         var self = this;
@@ -64,7 +66,7 @@ define(["knockout", "ko-textcut", "ko-hover", "ko-beforeSubscribe", "ko-onecBefo
 
         //测试接口
         if (self.parent.debug) {
-            case4 = self;
+            window.case4 = self;
         }
     };
 });

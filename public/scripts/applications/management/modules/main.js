@@ -7,7 +7,7 @@ define(["knockout", "Super", "sammy"], function (ko, Super, Sammy) {
         self.viewport("normal");
 
         Sammy(function () {
-            let fileter = ['list', 'detaile'];
+            let fileter = ['menu', 'footer'];
 
             this.get(/\#\/([\s\S]*)/, function (){
                 var module = this.params.splat[0];
@@ -17,11 +17,12 @@ define(["knockout", "Super", "sammy"], function (ko, Super, Sammy) {
                     name    : self.data.mapping.getJS(module),
                     template: self.data.mapping.getTemp(module),
                     data    : {
-                        parent  : self,
-                        data    : self.data
-                    },
-                    afterRender: function (){
-                        ko.utils.triggerEvent(document.body, "pageReady");
+                    parent  : self,
+                    data    : self.data
+                },
+                afterRender: function (){
+                    ko.utils.triggerEvent(document.body, "pageReady");
+                        self.loading(false);
                     }
                 });
             });

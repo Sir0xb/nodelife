@@ -12,7 +12,6 @@ let MongoStore = ___(session);
 import morgan from 'morgan';
 import flash from 'connect-flash';
 import swig from 'swig';
-import nunjucks from 'nunjucks';
 import fs from 'fs';
 
 import Config from './config/config';

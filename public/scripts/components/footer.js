@@ -3,7 +3,7 @@
 define(["knockout", "navigation"], function (ko) {
     ko.components.register('ko-footer', {
         viewModel: function (params) {
-            this._type = params.type;
+            
         },
         template: function () {
             return `

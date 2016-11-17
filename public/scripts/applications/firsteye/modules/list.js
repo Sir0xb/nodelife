@@ -1,3 +1,5 @@
+'use strict';
+
 define(["knockout", "Super", "ko-pages"], function (ko, Super) {
     return function (context) {
         var self = Super.call(this, context);
@@ -69,7 +71,7 @@ define(["knockout", "Super", "ko-pages"], function (ko, Super) {
         };
 
         if (self.data.test) {
-            list = self;
+            window.list = self;
         }
     };
 });

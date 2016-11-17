@@ -1,3 +1,5 @@
+'use strict';
+
 define(["knockout", "Super", "Tools"], function (ko, Super, Tools) {
     return function (context) {
         var self = Super.call(this, context);
@@ -28,7 +30,7 @@ define(["knockout", "Super", "Tools"], function (ko, Super, Tools) {
         };
 
         if (self.data.test) {
-            register = self;
+            window.register = self;
         }
     };
 });

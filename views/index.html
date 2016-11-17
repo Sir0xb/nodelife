@@ -3,7 +3,7 @@
 {% block title %} {{ title }} {% endblock %}
 
 {% block content %}
-<ko-layout params="context: __context__"></ko-layout>
+<!-- ko component: { name: 'ko-layout', params: { context: __context__ } } --><!-- /ko -->
 <div id="loading" data-bind="visible: loading()">
     <div class='rabbit'></div>
     <div class='clouds'></div>
@@ -12,8 +12,6 @@
 
 {% block script %}
     <script type="text/javascript">
-        console.info("{{ appName }}");
-
         require(["knockout", "Tools", "ko-amd", "layout"], function (ko, Tools) {
             // 问了能更灵活管理，加入插件等元素，不单独管理模块与模板，统一设置成统一目录
             ko.bindingHandlers.module.baseDir = "scripts/";  // 模块的默认文件夹

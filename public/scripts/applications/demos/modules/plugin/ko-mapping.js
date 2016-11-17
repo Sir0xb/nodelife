@@ -1,3 +1,5 @@
+'use strict';
+
 define(["knockout", "Super"], function (ko, Super) {
     return function (context) {
         var self = Super.call(this, context);
@@ -51,7 +53,7 @@ define(["knockout", "Super"], function (ko, Super) {
         console.log(self.ko_value_4()[1].b());  // 2.2
 
         if (self.data.test) {
-            ko_mapping = self;
+            window.ko_mapping = self;
         }
     };
 });

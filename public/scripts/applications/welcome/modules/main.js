@@ -1,3 +1,5 @@
+'use strict';
+
 define(["knockout", "Super", "sammy"], function (ko, Super, Sammy) {
     return function (context) {
         var self = Super.call(this, context);
@@ -6,8 +8,11 @@ define(["knockout", "Super", "sammy"], function (ko, Super, Sammy) {
         self.vpStyle("login_container");
 
         Sammy(function () {
+            let fileter = ['login', 'register'];
+
             this.get(/\#\/([\s\S]*)/, function (){
                 var module = this.params.splat[0];
+                module = fileter.includes(module) ? module : fileter[0];
 
                 self.container({
                     name    : self.data.mapping.getJS(module),
@@ -24,14 +29,14 @@ define(["knockout", "Super", "sammy"], function (ko, Super, Sammy) {
             });
 
             this.get(self.data.appUrl, function () {
-                this.app.runRoute("get", "#/login");
+                this.app.runRoute("get", `#/${fileter[0]}`);
             });
         });
 
         Sammy().run();
 
         if (self.data.test) {
-            main = self;
+            window.main = self;
         }
     };
 });
