@@ -29,7 +29,7 @@ define(["knockout", "lodash", "ko-amd", "navigation", "footer"], function (ko, _
             </div>
 
             <!-- ko if: ['login', 'big', 'normal'].indexOf(viewport()) != -1 -->
-            <!-- ko component: 'ko-footer' --><!-- /ko -->
+            <!-- ko component: { name: 'ko-footer', params: { siteList: data.siteList } } --><!-- /ko -->
             <!-- /ko -->
             `;
         }()

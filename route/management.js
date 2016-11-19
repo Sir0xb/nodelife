@@ -1,5 +1,7 @@
 'use strict';
 
+import _ from 'lodash';
+
 // 系统管理
 module.exports = function (app) {
     app.get("/management", function (req, res, next) {
@@ -13,80 +15,60 @@ module.exports = function (app) {
             appUrl  : '/management',
             // compress: ['localhost', '127.0.0.1'].indexOf(req.hostname) != -1 ? false : true,
             // showTest: !!req.query.unitTest,
-            params  : { test: true }
+            params  : _.extend({ test: true }, req.session.params)
         });
     });
 
-    app.post("/event/logout", function (req, res, next) {
-        req.session.user = null;
+    app.post('/event/footerUpdate', function (req, res, next) {
+        let FooterDao = require("../models/footerDao");
 
-        res.json({
-            success: true,
-            message: '成功退出'
-        });
-    });
+        let siteInfo = req.body.siteInfo;
 
-    app.post('/event/login', function (req, res, next) {
-        let UserDao = require("../models/userDao");
-
-        let username = req.body.username;
-        let password = req.body.password;
-
-        UserDao.findByName(username, function (err, obj) {
+        FooterDao.findById(siteInfo._id, function (err, obj) {
             if (err || !obj) {
-                res.json({
-                    success: false,
-                    message: '用户名或密码错误'
+                FooterDao.add(siteInfo, function (err, obj) {
+                    if (err) {
+                        res.json({
+                            success: false,
+                            message: '添加失败!'
+                        });
+                    } else {
+                        res.json({
+                            success: true,
+                            info: obj
+                        });
+                    }
                 });
             } else {
-                if (obj.username == username && obj.password == password) {
-                    req.session.user = username;
-                    res.json({
-                        success: true
-                    });
-                } else {
-                    res.json({
-                        success: false,
-                        message: '用户名或密码错误'
-                    });
-                }
+                FooterDao.updateById(siteInfo._id, siteInfo, function (err) {
+                    if (err) {
+                        res.json({
+                            success: false,
+                            message: '更新失败!'
+                        });
+                    } else {
+                        res.json({
+                            success: true,
+                            info: siteInfo
+                        });
+                    }
+                });
             }
         });
     });
 
-    app.post('/event/register', function (req, res, next) {
-        let UserDao = require("../models/userDao");
+    app.post('/event/deleteFooter', function (req, res, next) {
+        let FooterDao = require("../models/footerDao");
 
-        let username = req.body.username;
-        let password = req.body.password;
-        let confirm_password = req.body.confirm_password;
-
-        UserDao.findByName(username, function (err, obj) {
-            console.log(err);
-            console.log(obj);
-
+        FooterDao.removeById(req.body.id, function (err) {
             if (err) {
                 res.json({
                     success: false,
-                    message: "系统异常，请联系管理员"
-                });
-            } else if (obj) {
-                res.json({
-                    success: false,
-                    message: "用户已存在"
+                    message: '删除失败!'
                 });
             } else {
-                UserDao.save({
-                    username: username,
-                    password: password,
-                    level   : username == 'root' ? 1 : 7
-                }, function (err) {
-                    if (!err) {
-                        res.json({
-                            success  : true,
-                            message  : "创建成功"
-                        });
-                    }
+                res.json({
+                    success: true
                 });
             }
         });

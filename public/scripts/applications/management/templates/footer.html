@@ -1,1 +1,43 @@
-footer
+<div class="ui breadcrumb">
+    <a class="section" href="/"><i class="icon home"></i>主页</a>
+    <i class="right chevron icon divider"></i>
+    <div class="active section">Footer管理</div>
+</div>
+<h4 class="ui header">编辑之后刷新才能看到效果</h4>
+<div class="ignored ui info message">
+    <button class="ui mini orange button" data-bind="click: add">添加</button>
+    <a href="javascript:location.reload();" class="ui mini olive button">刷新</a>
+</div>
+<!-- ko if: siteList().length > 0 -->
+<div class="ui grid">
+    <div class="sixteen wide column" style="overflow: hidden;">
+        <table class="ui break celled table">
+            <thead>
+                <tr>
+                    <th>网站名称</th>
+                    <th>网站地址</th>
+                    <th style="width: 150px;">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- ko foreach: siteList -->
+                <tr>
+                    <td>
+                        <div class="ui ribbon black label" data-bind="text: site"></div>
+                    </td>
+                    <td data-bind="text: url"></td>
+                    <td>
+                        <div class="ui mini buttons">
+                            <button class="ui green button" data-bind="click: $parent.edit">编辑</button>
+                            <div class="or"></div>
+                            <button class="ui purple button" data-bind="click: $parent.delete">删除</button>
+                        </div>
+                    </td>
+                </tr>
+                <!-- /ko -->
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- /ko -->
+<div id="footerEditor" class="ui modal" data-bind="module: wind"></div>

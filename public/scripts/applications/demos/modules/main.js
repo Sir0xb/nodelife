@@ -18,6 +18,10 @@ define(["knockout", "Super", "sammy", "marked", "hljs"], function (ko, Super, Sa
                 'plugin/ko-validation.js',
             ];
 
+            this.get(self.data.appUrl, function () {
+                this.app.runRoute("get", `#/${fileter[0]}`);
+            });
+
             this.get(/\#\/([\s\S]*)/, function (){
                 var module = this.params.splat[0];
 
@@ -37,10 +41,6 @@ define(["knockout", "Super", "sammy", "marked", "hljs"], function (ko, Super, Sa
                             hljs.highlightBlock(block);
                         });
                     }
-                });
-
-                this.get(self.data.appUrl, function () {
-                    this.app.runRoute("get", `#/${fileter[0]}`);
                 });
             });
         });

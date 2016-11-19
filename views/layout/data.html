@@ -1,6 +1,8 @@
 <script type="text/javascript">
     var params = {{ JSON.stringify(params) }} || {};
-    params.test = true;
-    params.appUrl = '{{ appUrl }}';
+
+    if (params.test) {
+        console.info(params);
+    }
     var modules = {};
 </script>

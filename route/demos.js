@@ -1,6 +1,6 @@
 'use strict';
 
-import customs from './customs';
+import _ from 'lodash';
 import welcome from './welcome';
 
 module.exports = function (app) {
@@ -15,7 +15,7 @@ module.exports = function (app) {
             appUrl  : '/demos',
             // compress: ['localhost', '127.0.0.1'].indexOf(req.hostname) != -1 ? false : true,
             // showTest: !!req.query.unitTest,
-            params  : { test: true }
+            params  : _.extend({ test: true }, req.session.params)
         });
     });
 };

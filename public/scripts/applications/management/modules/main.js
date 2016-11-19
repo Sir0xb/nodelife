@@ -9,6 +9,10 @@ define(["knockout", "Super", "sammy"], function (ko, Super, Sammy) {
         Sammy(function () {
             let fileter = ['menu', 'footer'];
 
+            this.get(self.data.appUrl, function () {
+                this.app.runRoute("get", `#/${fileter[0]}`);
+            });
+
             this.get(/\#\/([\s\S]*)/, function (){
                 var module = this.params.splat[0];
                 module = fileter.includes(module) ? module : fileter[0];
@@ -25,10 +29,6 @@ define(["knockout", "Super", "sammy"], function (ko, Super, Sammy) {
                         self.loading(false);
                     }
                 });
-            });
-
-            this.get(self.data.appUrl, function () {
-                this.app.runRoute("get", `#/${fileter[0]}`);
             });
         });
 

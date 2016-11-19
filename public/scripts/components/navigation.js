@@ -29,21 +29,7 @@ define(["knockout", "Tools"], function (ko, Tools) {
             <div class="ui fixed inverted menu">
                 <div class="ui container">
                     <a class="header item" data-bind="click: backToMain">NodeLife</a>
-                    <a class="active item">菜单管理</a>
-                    <a class="item">Link</a>
-                    <div class="ui simple dropdown item">
-                        Dropdown
-                        <i class="dropdown icon"></i>
-                        <div class="menu transition" tabindex="-1">
-                            <div class="item">Action</div>
-                            <div class="item">Another Action</div>
-                            <div class="item">Something else here</div>
-                            <div class="divider"></div>
-                            <div class="item">Separated Link</div>
-                            <div class="divider"></div>
-                            <div class="item">One more separated link</div>
-                        </div>
-                    </div>
+                    <a class="item">xxx</a>
                     <div class="ui simple dropdown item">
                         培训内容 <i class="dropdown icon"></i>
                         <div class="menu">
@@ -52,10 +38,10 @@ define(["knockout", "Tools"], function (ko, Tools) {
                                 框架培训
                                 <div class="menu">
                                     <div class="header">KnockoutJS</div>
-                                    <a class="item" data-bind="click: appJump.bind($data, '/demos#/basic/case1')">基本用法</a>
-                                    <a class="item" data-bind="click: appJump.bind($data, '/demos#/basic/case2')">列表用法</a>
-                                    <a class="item" data-bind="click: appJump.bind($data, '/demos#/handlers/case3')">自定义标签</a>
-                                    <a class="item" data-bind="click: appJump.bind($data, '/demos#/plugin/ko-mapping')">ko-mapping</a>
+                                    <a class="item" data-bind="css: { action: location.pathname + location.hash == '/demos#/basic/case1' }, click: appJump.bind($data, '/demos#/basic/case1')">基本用法</a>
+                                    <a class="item" data-bind="css: { action: location.pathname + location.hash == '/demos#/basic/case2' }, click: appJump.bind($data, '/demos#/basic/case2')">列表用法</a>
+                                    <a class="item" data-bind="css: { action: location.pathname + location.hash == '/demos#/handlers/case3' }, click: appJump.bind($data, '/demos#/handlers/case3')">自定义标签</a>
+                                    <a class="item" data-bind="css: { action: location.pathname + location.hash == '/demos#/plugin/ko-mapping' }, click: appJump.bind($data, '/demos#/plugin/ko-mapping')">ko-mapping</a>
                                 </div>
                             </div>
                             <div class="item">
@@ -80,8 +66,8 @@ define(["knockout", "Tools"], function (ko, Tools) {
                         <div class="menu transition">
                             <div class="item">用户管理</div>
                             <div class="divider"></div>
-                            <div class="item" data-bind="click: appJump.bind($data, '/management#/menu')">菜单设置</div>
-                            <div class="item" data-bind="click: appJump.bind($data, '/management#/footer')">Footer设置</div>
+                            <div class="item" data-bind="css: { action: location.pathname + location.hash == '/management#/menu' }, click: appJump.bind($data, '/management#/menu')">菜单设置</div>
+                            <div class="item" data-bind="css: { action: location.pathname + location.hash == '/management#/footer' }, click: appJump.bind($data, '/management#/footer')">Footer设置</div>
                         </div>
                     </div>
                     <div class="right menu">

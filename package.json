@@ -13,7 +13,7 @@
   "main": "app.js",
   "scripts": {
     "mongo": "mongod --dbpath ~/work/mongodb/nodelife/data",
-    "app": "babel-node app.js",
+    "app": "nodemon --exec babel-node app.js",
     "watch": "gulp watch",
     "build": "gulp build",
     "test": "gulp test",

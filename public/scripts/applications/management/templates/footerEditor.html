@@ -1,0 +1,18 @@
+<i class="close icon"></i>
+<div class="header">Footer信息管理</div>
+<div class="content">
+    <form class="ui form">
+        <div class="field">
+            <label>站点名称:</label>
+            <input type="text" data-bind="value: siteInfo().site">
+        </div>
+        <div class="field">
+            <label>站点地址:</label>
+            <input type="text" data-bind="value: siteInfo().url">
+        </div>
+    </form>
+</div>
+<div class="actions">
+    <div class="ui black deny button"><i class="remove icon"></i>取消</div>
+    <div class="ui green button" data-bind="click: save"><i class="checkmark icon"></i>保存</div>
+</div>
