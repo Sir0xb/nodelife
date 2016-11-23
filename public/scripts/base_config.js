@@ -40,7 +40,8 @@ require.config({
         // components
         "navigation"              : "scripts/components/navigation",
         "footer"                  : "scripts/components/footer",
-        "layout"                  : "scripts/components/layout"
+        "layout"                  : "scripts/components/layout",
+        "pagenation"              : "scripts/components/pagenation"
     },
     shim   : {
         "semantic"      : ["jquery"],

@@ -70,7 +70,7 @@
             <tfoot data-bind="if: total() > 1">
                 <tr>
                     <th colspan="6">
-                        <div class="ui right floated pagination menu" data-bind="pagination: { page: 'page', total: 'total', method: 'search' }"></div>
+                        <!-- ko component: { name: 'ko-pagenation', params: { page: pageNumber, total: total, search: search } }--><!-- /ko -->
                     </th>
                 </tr>
             </tfoot>

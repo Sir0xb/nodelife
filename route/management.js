@@ -9,7 +9,6 @@ module.exports = function (app) {
             user    : req.session.user,
             // currentUser: userdata,
             // menus   : obj[0].subMenu || [],
-            // message : message,
             title   : '系统管理',
             appName : 'management',
             appUrl  : '/management',
@@ -19,7 +18,34 @@ module.exports = function (app) {
         });
     });
 
-    app.post('/event/footerUpdate', function (req, res, next) {
+    app.post("/event/menu/update", function(req, res, next) {
+        var rootMenu = req.body.menus[0];
+        var menuId = rootMenu.menuId;
+
+        MenuDao.findById(menuId, function (err, obj) {
+            if (err || !obj) {
+                res.json({
+                    success: false,
+                    message: '找不到菜单信息!'
+                });
+            } else {
+                MenuDao.updateById(menuId, rootMenu, function (err) {
+                    if (err) {
+                        res.json({
+                            success: false,
+                            message: '更新失败!'
+                        });
+                    } else {
+                        res.json({
+                            success: true
+                        });
+                    }
+                });
+            }
+        });
+    });
+
+    app.post('/event/footer/update', function (req, res, next) {
         let FooterDao = require("../models/footerDao");
 
         let siteInfo = req.body.siteInfo;
@@ -57,7 +83,7 @@ module.exports = function (app) {
         });
     });
 
-    app.post('/event/deleteFooter', function (req, res, next) {
+    app.post('/event/footer/delete', function (req, res, next) {
         let FooterDao = require("../models/footerDao");
 
         FooterDao.removeById(req.body.id, function (err) {

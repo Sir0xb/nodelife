@@ -60,7 +60,7 @@ define(["knockout", "Super", "Tools"], function (ko, Super, Tools) {
             }, function(isConfirm){
                 if (isConfirm) {
                     Tools.ajax({
-                        url    : "/event/deleteFooter",
+                        url    : "/event/footer/delete",
                         data   : {
                             id : info._id()
                         },
@@ -68,6 +68,8 @@ define(["knockout", "Super", "Tools"], function (ko, Super, Tools) {
                             if (returnData.success) {
                                 self.siteList.remove(info);
                                 self.sweet("Deleted!", "删除成功!", "success");
+                            } else {
+                                self.sweet("Wrong!", returnData.message, "error");
                             }
                         }
                     });

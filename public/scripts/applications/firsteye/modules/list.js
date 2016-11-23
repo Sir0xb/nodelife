@@ -1,6 +1,6 @@
 'use strict';
 
-define(["knockout", "Super", "ko-pages"], function (ko, Super) {
+define(["knockout", "Super", "pagenation"], function (ko, Super) {
     return function (context) {
         var self = Super.call(this, context);
 
@@ -46,12 +46,12 @@ define(["knockout", "Super", "ko-pages"], function (ko, Super) {
             this.parentId(this.parentId() * 10);
         };
 
-        self.total = ko.observable(3);
-        self.page = ko.observable(1);
+        self.total = ko.observable(11);
+        self.pageNumber = ko.observable(1);
         self.search = function (page) {
             console.info("This is xxx message");
             console.info(page);
-            self.page(page);
+            self.pageNumber(page);
         };
 
         self.detaile = function () {

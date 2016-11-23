@@ -1,7 +1,9 @@
-var mongodb = require("../config/mongodb");
+'use strict';
 
-var Schema = mongodb.mongoose.Schema;
-var FooterSchema = new Schema({
+let mongodb = require("../config/mongodb");
+
+let Schema = mongodb.mongoose.Schema;
+let FooterSchema = new Schema({
     site        : String,
     url         : String,
     create_date : {
@@ -14,12 +16,12 @@ var FooterSchema = new Schema({
     }
 });
 
-var Footer = mongodb.mongoose.model("footer", FooterSchema);
+let Footer = mongodb.mongoose.model("footer", FooterSchema);
 
-var FooterDao = function () {};
+let FooterDao = function () {};
 
 FooterDao.prototype.add = function (obj, callback) {
-    var instance = new Footer(obj);
+    let instance = new Footer(obj);
     instance.save(function (err) {
         callback(err, instance);
     });

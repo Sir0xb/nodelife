@@ -1,7 +1,9 @@
-var mongodb = require("../config/mongodb");
+'use strict';
 
-var Schema = mongodb.mongoose.Schema;
-var UserSchema = new Schema({
+let mongodb = require("../config/mongodb");
+
+let Schema = mongodb.mongoose.Schema;
+let UserSchema = new Schema({
     username    : String,
     password    : String,
     level       : {
@@ -18,12 +20,12 @@ var UserSchema = new Schema({
     }
 });
 
-var User = mongodb.mongoose.model("User", UserSchema);
+let User = mongodb.mongoose.model("user", UserSchema);
 
-var UserDao = function () {};
+let UserDao = function () {};
 
 UserDao.prototype.save = function (obj, callback) {
-    var instance = new User(obj);
+    let instance = new User(obj);
     instance.save(function (err) {
         callback(err);
     });

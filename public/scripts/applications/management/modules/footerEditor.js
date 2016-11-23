@@ -11,7 +11,7 @@ define(["knockout", "Super", "Tools"], function (ko, Super, Tools) {
 
         self.save = function () {
             Tools.ajax({
-                url    : "/event/footerUpdate",
+                url    : "/event/footer/update",
                 data   : {
                     siteInfo: ko.mapping.toJS(self.siteInfo)
                 },
@@ -28,7 +28,7 @@ define(["knockout", "Super", "Tools"], function (ko, Super, Tools) {
                         }
                         $("#footerEditor").modal("hide");
                     } else {
-                        self.sweet("wrong!", returnData.info, "error");
+                        self.sweet("Wrong!", returnData.message, "error");
                     }
 
                 }
