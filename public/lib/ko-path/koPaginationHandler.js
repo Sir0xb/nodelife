@@ -27,9 +27,15 @@ define(["knockout"], function(ko) {
             result += '      <a class="item" data-bind="css: { \'active\': $data == $parent.' + page + '() }, click: $parent.' + method + '.bind($data, $data), text: $data + 1"></a>';
             result += '    <!-- /ko -->';
             result += '    <a class="item">...</a>';
+            result += '    <a class="item" data-bind="click: ' + method + '.bind($data, ' + total + '() - 3), text: ' + total + '() - 2"></a>';
+            result += '    <a class="item" data-bind="click: ' + method + '.bind($data, ' + total + '() - 2), text: ' + total + '() - 1"></a>';
+            result += '    <a class="item" data-bind="click: ' + method + '.bind($data, ' + total + '() - 1), text: ' + total + '() - 0"></a>';
             result += '  <!-- /ko -->';
 
             result += '  <!-- ko if: ' + page + '() >= ' + total + '() - 7 -->';
+            result += '    <a class="item" data-bind="click: ' + method + '.bind($data, 0)">1</a>';
+            result += '    <a class="item" data-bind="click: ' + method + '.bind($data, 1)">2</a>';
+            result += '    <a class="item" data-bind="click: ' + method + '.bind($data, 2)">3</a>';
             result += '    <a class="item">...</a>';
             result += '    <!-- ko foreach: (function(){ var result = []; for(var i = Math.min(' + total + '() - 4, ' + page + '() - 2); i < ' + total + '() - 1; i++){ result.push(i) } return result; }()) -->';
             result += '      <a class="item" data-bind="css: { \'active\': $data == $parent.' + page + '() }, click: $parent.' + method + '.bind($data, $data), text: $data + 1"></a>';
@@ -38,17 +44,17 @@ define(["knockout"], function(ko) {
 
             result += '  <!-- ko ifnot: ' + page + '() < 6 -->';
             result += '  <!-- ko ifnot: ' + page + '() >= ' + total + '() - 7 -->';
-            result += '    <a class="item" data-bind="click: ' + method + '.bind(0, 0)">1</a>';
-            result += '    <a class="item" data-bind="click: ' + method + '.bind(1, 1)">2</a>';
-            result += '    <a class="item" data-bind="click: ' + method + '.bind(2, 2)">3</a>';
+            result += '    <a class="item" data-bind="click: ' + method + '.bind($data, 0)">1</a>';
+            result += '    <a class="item" data-bind="click: ' + method + '.bind($data, 1)">2</a>';
+            result += '    <a class="item" data-bind="click: ' + method + '.bind($data, 2)">3</a>';
             result += '    <a class="item">...</a>';
             result += '    <!-- ko foreach: (function(){ var result = []; for(var i = ' + page + '() - 2; i <= ' + page + '() + 2; i++){ result.push(i) } return result; }()) -->';
             result += '      <a class="item" data-bind="css: { \'active\': $data == $parent.' + page + '() }, click: $parent.' + method + '.bind($data, $data), text: $data + 1"></a>';
             result += '    <!-- /ko -->';
             result += '    <a class="item">...</a>';
-            result += '    <a class="item" data-bind="click: ' + method + '.bind(' + total + '() - 3, ' + total + '() - 3), text: ' + total + '() - 3"></a>';
-            result += '    <a class="item" data-bind="click: ' + method + '.bind(' + total + '() - 2, ' + total + '() - 2), text: ' + total + '() - 2"></a>';
-            result += '    <a class="item" data-bind="click: ' + method + '.bind(' + total + '() - 1, ' + total + '() - 1), text: ' + total + '() - 1"></a>';
+            result += '    <a class="item" data-bind="click: ' + method + '.bind($data, ' + total + '() - 3), text: ' + total + '() - 2"></a>';
+            result += '    <a class="item" data-bind="click: ' + method + '.bind($data, ' + total + '() - 2), text: ' + total + '() - 1"></a>';
+            result += '    <a class="item" data-bind="click: ' + method + '.bind($data, ' + total + '() - 1), text: ' + total + '() - 0"></a>';
             result += '  <!-- /ko -->';
             result += '  <!-- /ko -->';
 
