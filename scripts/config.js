@@ -137,6 +137,16 @@ let config = {
 
         dest_path: `${base}/public/scripts/`
     },
+    iframe: {
+        paths: (() => {
+            return [
+                `${base}/public/scripts/applications/**/*.html`
+            ];
+        })(),
+
+        make_key: 'police',
+        dest_path: `${base}/public/scripts/applications/`
+    },
     defer (callback) {
         let def = $.q.defer();
 
