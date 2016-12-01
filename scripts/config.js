@@ -121,8 +121,8 @@ let config = {
     html: {
         clean_paths: (() => {
             return [
-                `${base}/public/scripts/**/*.html`,
-                `!${base}/public/scripts/**/*-*.html`
+                `${base}/public/scripts/**/*-*.html`,
+                `!${base}/public/scripts/**/ko-*.html`
             ];
         })(),
 
