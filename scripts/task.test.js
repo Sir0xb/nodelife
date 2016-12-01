@@ -8,8 +8,8 @@ module.exports = function (gulp, $) {
         return $.jobStart('Tast test');
     }).then(function () {
         return test_cleaner(gulp, $);
-    }).then(function () {
-        return test_compile(gulp, $);
+    // }).then(function () {
+    //     return test_compile(gulp, $);
     }).then(function () {
         return $.jobEnd('Tast test');
     });

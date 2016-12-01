@@ -74,7 +74,7 @@ let config = {
         paths: (() => {
             return [
                 `${base}/public/styles/*.css`,
-                `${base}/public/styles/*-*.css`
+                `!${base}/public/styles/*-*.css`
             ];
         })(),
         map_path: 'maps',
@@ -100,7 +100,10 @@ let config = {
     },
     js: {
         clean_paths: (() => {
-            return [];
+            return [
+                `${base}/public/scripts/**/*-*.min.js`,
+                `${base}/public/scripts/*.json`
+            ];
         })(),
 
         paths: (() => {
