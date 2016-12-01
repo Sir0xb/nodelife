@@ -62,14 +62,16 @@ let config = {
     css: {
         clean_paths: (() => {
             return [
-                `${base}/public/styles/*.min.css`,
+                `${base}/public/styles/*-*.css`,
+                `${base}/public/styles/*.json`,
                 `${base}/public/styles/maps/`
             ]
         })(),
 
         paths: (() => {
             return [
-                `${base}/public/styles/*.scss`
+                `${base}/public/styles/*.css`,
+                `${base}/public/styles/*-*.css`
             ];
         })(),
         map_path: 'maps',

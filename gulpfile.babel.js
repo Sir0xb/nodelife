@@ -8,13 +8,13 @@ import tk_sass   from './scripts/task.sass';
 import test      from './scripts/task.css';
 
 gulp.task('test', function () {
-    test(gulp, $);
+    return test(gulp, $);
 });
 
 gulp.task('watch', ['default'], function () {
-    gulp.watch($.sass.watch_paths, ['default']);
+    return gulp.watch($.sass.watch_paths, ['default']);
 });
 
 gulp.task('default', function () {
-    tk_sass(gulp, $);
+    return tk_sass(gulp, $);
 });
