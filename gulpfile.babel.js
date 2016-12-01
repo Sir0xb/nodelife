@@ -1,20 +1,20 @@
 'use strict';
 
-import gulp   from 'gulp';
-import $      from 'gulp-load-plugins';
-import Config from './scripts/gulp.config.js';
-import build  from './scripts/build.task.js';
-import test   from './scripts/test.task.js';
-import untest from './scripts/untest.task.js';
-import watch  from './scripts/watch.task.js';
-import def    from './scripts/default.task.js';
+import gulp      from 'gulp';
 
-gulp.task("build", build(gulp, $(Config.$option)));
+import $         from './scripts/config';
+import tk_sass   from './scripts/task.sass';
 
-gulp.task("test", test(gulp, $(Config.$option)));
+import test      from './scripts/task.css';
 
-gulp.task("untest", untest(gulp, $(Config.$option)));
+gulp.task('test', function () {
+    test(gulp, $);
+});
 
-gulp.task("watch", watch(gulp, $(Config.$option)));
+gulp.task('watch', ['default'], function () {
+    gulp.watch($.sass.watch_paths, ['default']);
+});
 
-gulp.task("default", def(gulp, $(Config.$option)));
+gulp.task('default', function () {
+    tk_sass(gulp, $);
+});
