@@ -110,27 +110,57 @@ let config = {
             return [
                 `${base}/public/scripts/**/*.js`,
                 `!${base}/public/scripts/**/*.min.js`,
+                `!${base}/public/scripts/base_config.js`,
             ];
         })(),
-        manifest_path: `${base}/public/rev-manifest.json`,
-        minifest_cwd: `${base}/public/`,
+        manifest_path: `../../public/scripts/rev-manifest.json`,
+        minifest_cwd: `../../public/scripts/`,
 
         dest_path: `${base}/public/scripts/`
     },
-    defer: function (callback) {
+    html: {
+        clean_paths: (() => {
+            return [
+                `${base}/public/scripts/**/*.html`,
+                `!${base}/public/scripts/**/*-*.html`
+            ];
+        })(),
+
+        paths: (() => {
+            return [
+                `${base}/public/scripts/**/*.html`,
+                `!${base}/public/scripts/**/*-*.html`
+            ];
+        })(),
+        manifest_path: `../../public/scripts/rev-manifest.json`,
+        minifest_cwd: `../../public/scripts/`,
+
+        dest_path: `${base}/public/scripts/`
+    },
+    defer (callback) {
         let def = $.q.defer();
 
         callback(def);
 
         return def.promise;
     },
-    jobStart: function (taskName, base = null) {
+    great_promise (honestArray) {
+        let deferred = $.q.defer();
+
+        $.q.all(honestArray)
+        .then(function () {
+            deferred.resolve();
+        });
+
+        return deferred.promise;
+    },
+    jobStart (taskName, base = null) {
         let startTime = new Date();
         timeCache[`${taskName}${base}`] = startTime;
         console.info(`[${ $.chalk.gray($.dateformat(startTime, 'H:MM:ss')) }] ${ $.chalk.red('Starting') } '${ $.chalk.green(taskName) }' ... ${ base != null ? ' ==> ' + $.chalk.yellow(base) : '' }`);
         return true;
     },
-    jobEnd: function (taskName, base = null) {
+    jobEnd (taskName, base = null) {
         let startTime = timeCache[`${taskName}${base}`];
         let endTime = new Date();
         console.info(`[${ $.chalk.gray($.dateformat(endTime, 'H:MM:ss')) }] ${ $.chalk.blue('Finished') } '${ $.chalk.green(taskName) }' in ${ $.chalk.magenta(endTime.getTime() - startTime.getTime() + ' ms') } ${ base != null ? ' ==> ' + $.chalk.yellow(base) : '' }`);
