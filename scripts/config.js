@@ -8,7 +8,10 @@ let $ = Plugins({
     lazy: true
 });
 
-// { base64: [Getter],
+// console.dir($);
+//
+// { babel: [Getter],
+//   base64: [Getter],
 //   clean: [Getter],
 //   concat: [Getter],
 //   cssimport: [Getter],
@@ -28,8 +31,9 @@ let $ = Plugins({
 //   util: [Getter],
 //   watch: [Getter],
 //   q: [Getter],
-//   dateformat: [Getter],
-//   lodash: [Getter] }
+//   lodash: [Getter],
+//   chalk: [Getter],
+//   dateformat: [Getter] }
 
 let base = '.';
 let timeCache = {};
@@ -63,8 +67,7 @@ let config = {
         clean_paths: (() => {
             return [
                 `${base}/public/styles/*-*.css`,
-                `${base}/public/styles/*.json`,
-                `${base}/public/styles/maps/`
+                `${base}/public/styles/*.json`
             ]
         })(),
 
@@ -76,6 +79,40 @@ let config = {
         })(),
         map_path: 'maps',
         dest_path: `${base}/public/styles/`
+    },
+    link: {
+        clean_paths: (() => {
+            return [
+                `${base}/views/layout/links.html`
+            ];
+        })(),
+        pattern: /main(\S*).css/g,
+        reset_name: 'main.css',
+
+        paths: (() => {
+            return [
+                `${base}/public/styles/rev-manifest.json`,
+                `${base}/views/layout/links.html`
+            ];
+        })(),
+
+        dest_path: `${base}/views/layout/`
+    },
+    js: {
+        clean_paths: (() => {
+            return [];
+        })(),
+
+        paths: (() => {
+            return [
+                `${base}/public/scripts/**/*.js`,
+                `!${base}/public/scripts/**/*.min.js`,
+            ];
+        })(),
+        manifest_path: `${base}/public/rev-manifest.json`,
+        minifest_cwd: `${base}/public/`,
+
+        dest_path: `${base}/public/scripts/`
     },
     defer: function (callback) {
         let def = $.q.defer();

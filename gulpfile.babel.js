@@ -5,7 +5,7 @@ import gulp      from 'gulp';
 import $         from './scripts/config';
 import tk_sass   from './scripts/task.sass';
 
-import test      from './scripts/task.css';
+import test      from './scripts/task.test';
 
 gulp.task('test', function () {
     return test(gulp, $);
