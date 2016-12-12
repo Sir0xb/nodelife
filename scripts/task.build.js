@@ -20,9 +20,10 @@ module.exports = function (gulp, $) {
             cleaner_css(gulp, $),
             cleaner_link(gulp, $),
             cleaner_js(gulp, $),
-            cleaner_html(gulp, $),
-            cleaner_iframe(gulp, $)
+            cleaner_html(gulp, $)
         ]);
+    }).then(function () {
+        return cleaner_iframe(gulp, $);
     }).then(function () {
         return compile_iframe(gulp, $);
     }).then(function () {

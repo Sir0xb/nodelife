@@ -34,14 +34,14 @@ require.config({
         "css_monokai"             : "lib/highlight/styles/monokai-sublime",
 
         // 项目自有库
-        "Tools"                   : "scripts/tools/tools",
-        "Super"                   : "scripts/tools/super",
+        "Tools"                   : "tools/tools",
+        "Super"                   : "tools/super",
 
         // components
-        "navigation"              : "scripts/components/navigation",
-        "footer"                  : "scripts/components/footer",
-        "layout"                  : "scripts/components/layout",
-        "pagenation"              : "scripts/components/pagenation"
+        "navigation"              : "components/navigation",
+        "footer"                  : "components/footer",
+        "layout"                  : "components/layout",
+        "pagenation"              : "components/pagenation"
     },
     shim   : {
         "semantic"      : ["jquery"],

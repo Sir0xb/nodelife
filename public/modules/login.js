@@ -4,6 +4,8 @@ define(["knockout", "Super", "Tools"], function (ko, Super, Tools) {
     return function (context) {
         var self = Super.call(this, context);
 
+        self.viewport('login');
+
         self.username = ko.observable('');
         self.password = ko.observable('');
 
@@ -16,7 +18,7 @@ define(["knockout", "Super", "Tools"], function (ko, Super, Tools) {
                 },
                 success: function (returnData) {
                     if (returnData.success) {
-                        location.href = "/main";
+                        location.href = "/";
                     } else {
                         self.sweet('', returnData.message, 'error');
                     }

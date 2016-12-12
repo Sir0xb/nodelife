@@ -4,40 +4,6 @@ import _ from 'lodash';
 
 // 登陆 注册账号
 module.exports = function (app) {
-    app.get("/welcome", function (req, res, next) {
-        res.render("index.html", {
-            user    : req.session.user,
-            // currentUser: userdata,
-            // menus   : obj[0].subMenu || [],
-            // message : message,
-            title   : 'Welcome',
-            appName : 'welcome',
-            appUrl  : '/welcome',
-            // compress: ['localhost', '127.0.0.1'].indexOf(req.hostname) != -1 ? false : true,
-            // showTest: !!req.query.unitTest,
-            params  : _.extend({ test: true }, req.session.params)
-        });
-    });
-
-    app.get("/", function (req, res, next) {
-        res.redirect('/firsteye');
-    });
-
-    app.get("/firsteye", function (req, res, next) {
-        res.render("index.html", {
-            user    : req.session.user,
-            // currentUser: userdata,
-            // menus   : obj[0].subMenu || [],
-            // message : message,
-            title   : 'Welcome',
-            appName : 'firsteye',
-            appUrl  : '/firsteye',
-            // compress: ['localhost', '127.0.0.1'].indexOf(req.hostname) != -1 ? false : true,
-            // showTest: !!req.query.unitTest,
-            params  : _.extend({ test: true }, req.session.params)
-        });
-    });
-
     app.post("/event/logout", function (req, res, next) {
         req.session.user = null;
 

@@ -65,7 +65,7 @@
     "express": "4.13.3",
     "express-session": "1.12.1",
     "file-stream-rotator": "0.0.6",
-    "lodash": "4.16.4",
+    "lodash": "^4.17.2",
     "mongodb": "2.1.18",
     "mongoose": "4.6.6",
     "morgan": "1.6.1",

@@ -507,25 +507,24 @@ define(["jquery", "mock"], function ($, Mock) {
 
     //创建获取资源函数的函数
     //第一个参数：主目录
-    //第二个参数：应用名称
-    //第三个参数：资源类型 js or html
-    //第四个参数：是否测试环境(部署之后文件会被压缩，名称发生变化)
-    function getFunc(path, appName, type, isTest) {
-        return function (key, _appName) {
+    //第二个参数：资源类型 js or html
+    //第三个参数：是否测试环境(部署之后文件会被压缩，名称发生变化)
+    function getFunc(path, type, isTest) {
+        return function (key) {
             var result = "";
 
             if (isTest) {
                 if (type == "js") {
-                    return path + "/" + (_appName || appName) + "/modules/" + key + ".js";
+                    return path + "/modules/" + key + ".js";
                 } else {
-                    result = path + "/" +  (_appName || appName) + "/templates/" + key + ".html";
+                    result = path + "/templates/" + key + ".html";
                     return result.substring(0, result.length - 5);
                 }
             } else {
                 if (type == "js") {
-                    return this[path + "/" +  (_appName || appName) + "/modules/" + key + ".min.js"];
+                    return this[path + "/modules/" + key + ".min.js"];
                 } else {
-                    result = this[path + "/" +  (_appName || appName) + "/templates/" + key + ".html"];
+                    result = this[path + "/templates/" + key + ".html"];
                     return result.substring(0, result.length - 5);
                 }
             }

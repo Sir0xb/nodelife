@@ -1,17 +1,19 @@
 'use strict';
 
-define(["knockout", "Tools"], function (ko, Tools) {
+define(["knockout", "lodash", "Tools"], function (ko, _, Tools) {
     ko.components.register('ko-navigation', {
         viewModel: function (params) {
-            this.backToMain = function () {
+            var self = _.extend(this, params);
+
+            self.backToMain = function () {
                 location.href = "/";
             };
 
-            this.appJump = function (link) {
+            self.appJump = function (link) {
                 location.href = link;
             };
 
-            this.logout = function () {
+            self.logout = function () {
                 Tools.ajax({
                     url    : "/event/logout",
                     success: function (returnData) {
@@ -23,6 +25,10 @@ define(["knockout", "Tools"], function (ko, Tools) {
                     }
                 });
             };
+
+            _.extend(params, {
+                logout: self.logout
+            });
         },
         template: function () {
             return `
@@ -38,10 +44,10 @@ define(["knockout", "Tools"], function (ko, Tools) {
                                 框架培训
                                 <div class="menu">
                                     <div class="header">KnockoutJS</div>
-                                    <a class="item" data-bind="css: { action: location.pathname + location.hash == '/demos#/basic/case1' }, click: appJump.bind($data, '/demos#/basic/case1')">基本用法</a>
-                                    <a class="item" data-bind="css: { action: location.pathname + location.hash == '/demos#/basic/case2' }, click: appJump.bind($data, '/demos#/basic/case2')">列表用法</a>
-                                    <a class="item" data-bind="css: { action: location.pathname + location.hash == '/demos#/handlers/case3' }, click: appJump.bind($data, '/demos#/handlers/case3')">自定义标签</a>
-                                    <a class="item" data-bind="css: { action: location.pathname + location.hash == '/demos#/plugin/ko-mapping' }, click: appJump.bind($data, '/demos#/plugin/ko-mapping')">ko-mapping</a>
+                                    <a class="item" data-bind="css: { action: location.pathname + location.hash == '#/basic/case1' }, click: appJump.bind($data, '#/basic/case1')">基本用法</a>
+                                    <a class="item" data-bind="css: { action: location.pathname + location.hash == '#/basic/case2' }, click: appJump.bind($data, '#/basic/case2')">列表用法</a>
+                                    <a class="item" data-bind="css: { action: location.pathname + location.hash == '#/handlers/case3' }, click: appJump.bind($data, '#/handlers/case3')">自定义标签</a>
+                                    <a class="item" data-bind="css: { action: location.pathname + location.hash == '#/plugin/ko-mapping' }, click: appJump.bind($data, '#/plugin/ko-mapping')">ko-mapping</a>
                                 </div>
                             </div>
                             <div class="item">
